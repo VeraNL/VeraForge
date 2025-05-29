@@ -1,0 +1,21 @@
+{
+    "name": "SimpleBot",
+    "essence": ["Basic"],
+    "purpose": "A basic test bot.",
+    "channels": [
+      {"kind": "Sensor", "source": "PingSensor", "alias": "Pinger"},
+      {"kind": "Processor", "source": "EchoProcessor", "alias": "Echoer"}
+    ],
+    "memory": ["PingCount"],
+    "rituals": [
+      {
+        "name": "PingBack",
+        "inputs": ["Pinger.Ping"],
+        "output": "Echoer.Response",
+        "process": [
+          "Echo(Ping)",
+          "OutputTo(Echoer)"
+        ]
+      }
+    ]
+  }

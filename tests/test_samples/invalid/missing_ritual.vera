@@ -1,0 +1,12 @@
+Archetype "BrokenBot" {
+  Essence: [Incomplete]
+  Purpose: "This bot is broken because it has no rituals."
+
+  Channels:
+    - Sensor("GlitchSensor") as Glitch
+    - Processor("VoidProcessor") as Void
+
+  Memory(["NullState"]) as LostMemory
+
+  // Notice: no Emanations or Ritual blocks!
+}

@@ -1,0 +1,7 @@
+Archetype BrokenSyntax {
+  Essence: [Bad, Format,
+  Purpose: "Forgot a closing bracket and quotes
+
+  Channels:
+    - Sensor("Oops") as OopsSensor
+}
