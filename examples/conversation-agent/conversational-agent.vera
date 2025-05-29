@@ -1,0 +1,33 @@
+Archetype "ConversationalCompanion" {
+  Essence: [Empathetic, Contextual, Adaptive]
+  Purpose: "To engage users in natural dialogue, remembering context and emotional tone across sessions."
+
+  Channels:
+    - Sensor("Microphone-V3") as VoiceInput
+    - Sensor("TextBox-T1") as TextInput
+    - Processor("ToneAnalyzer9000") as EmotionEngine
+    - Processor("LLM-Core") as LanguageModel
+
+  Memory(["UserHistory", "EmotionalState", "RecentTopics"]) as DialogueMemory
+
+  Emanations:
+    - Ritual "EngageUser" {
+        Input: TextInput.Text, VoiceInput.Speech
+        Output: LanguageModel.Response
+        Process:
+          -> Transcribe(VoiceInput)
+          -> MergeInputs(TextInput, VoiceInput)
+          -> AnalyzeTone(MergedInput) -> StoreTo(DialogueMemory)
+          -> GenerateResponse(MergedInput, EmotionalState)
+          -> OutputTo(LanguageModel)
+      }
+
+    - Ritual "RememberContext" {
+        Input: DialogueMemory.UserHistory, DialogueMemory.RecentTopics
+        Output: LanguageModel.Context
+        Process:
+          -> Summarize(RecentTopics)
+          -> UpdateContextModel(UserHistory, SummarizedTopics)
+          -> OutputTo(LanguageModel)
+      }
+}
