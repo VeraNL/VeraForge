@@ -1,0 +1,19 @@
+Archetype "SimpleBot" {
+  Essence: [Basic]
+  Purpose: "A basic test bot."
+
+  Channels:
+    - Sensor("PingSensor") as Pinger
+    - Processor("EchoProcessor") as Echoer
+
+  Memory(["PingCount"]) as PingMemory
+
+  Emanations:
+    - Ritual "PingBack" {
+        Input: Pinger.Ping
+        Output: Echoer.Response
+        Process:
+          -> Echo(Ping)
+          -> OutputTo(Echoer)
+      }
+}
