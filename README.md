@@ -3,14 +3,14 @@ Compiler for the family of Vera languages (VeraPoetry, VeraDSL, VeraNL) targetin
 
 Note: this project is in early design phases.
 
-## Sample CLI Command
+## CLI Compile Command
 
 ```bash
 # Compile to fast-agent Python
-veraforge compile examples/sensor-fusion-bot.vera --target=fast-agent --output sensor_fusion_bot.py
+python veraforge.py compile examples/sensor-fusion-bot.vera --target=fast-agent --output sensor_fusion_bot.py
 
 # Compile to IR for debugging or system visualization
-veraforge compile examples/sensor-fusion-bot.vera --target=ir --output sensor_fusion_bot.vf.json
+python veraforge.py compile examples/sensor-fusion-bot.vera --target=ir --output sensor_fusion_bot.vf.json
 ```
 
 ## VeraForgeIR Format (Example)
@@ -42,4 +42,17 @@ veraforge compile examples/sensor-fusion-bot.vera --target=ir --output sensor_fu
     }
   ]
 }
+```
+
+## CLI Test Command
+
+```bash
+# Run everything
+python veraforge.py test
+
+# Only parsing checks
+python veraforge.py test --mode=parse
+
+# Only snapshot verification
+python veraforge.py test --mode=snapshot
 ```
