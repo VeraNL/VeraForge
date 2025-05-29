@@ -1,0 +1,34 @@
+tests:
+  - id: simple-bot
+    name: SimpleBot
+    category: valid
+    purpose: "A minimal working bot for verifying the base parser structure."
+    files:
+      vera: valid/simple_bot.vera
+      snapshot: valid/simple_bot.vf.json
+    expected_result: snapshot
+
+  - id: conversational-agent
+    name: ConversationalCompanion
+    category: valid
+    purpose: "Tests multimodal input and multiple rituals with contextual memory."
+    files:
+      vera: valid/conversational_agent.vera
+      snapshot: valid/conversational_agent.vf.json
+    expected_result: snapshot
+
+  - id: missing-ritual
+    name: BrokenBot
+    category: invalid
+    purpose: "Fails due to absence of an Emanations block."
+    files:
+      vera: invalid/missing_ritual.vera
+    expected_result: fail
+
+  - id: bad-syntax
+    name: BrokenSyntax
+    category: invalid
+    purpose: "Fails due to malformed Essence list and incomplete Purpose string."
+    files:
+      vera: invalid/bad_syntax.vera
+    expected_result: fail
