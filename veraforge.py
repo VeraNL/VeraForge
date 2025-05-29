@@ -15,8 +15,8 @@ def main():
     # --- compile command ---
     compile_parser = subparsers.add_parser("compile", help="Compile a .vera file to target code or IR")
     compile_parser.add_argument("input", help="Path to .vera file")
-    compile_parser.add_argument("--target", choices=["fast-agent", "ir"], required=True)
-    compile_parser.add_argument("--output", required=True)
+    compile_parser.add_argument("--target", choices=["fast-agent", "ir"], required=True, help="Target format")
+    compile_parser.add_argument("--output", required=True, help="Path to output file")
 
     # --- test command ---
     test_parser = subparsers.add_parser("test", help="Run VeraForge parser and snapshot tests")
