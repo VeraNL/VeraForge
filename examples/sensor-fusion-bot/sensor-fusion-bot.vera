@@ -1,0 +1,24 @@
+Archetype "SensorFusionBot" {
+  Essence: [Integrative, Reactive, Real-Time]
+  Purpose: "To fuse multi-modal sensor inputs into a coherent awareness frame for downstream tasks."
+
+  Channels:
+    - Sensor("LIDAR-X5") as DepthSensor
+    - Sensor("VisionCam-A2") as VisualSensor
+    - Sensor("MicArray-V1") as AudioSensor
+    - Processor("EdgePredictor") as AnalysisEngine
+
+  Memory(["RecentFrames", "ObjectPatterns", "NoiseThresholds"]) as FusionMemory
+
+  Emanations:
+    - Ritual "FuseInputs" {
+        Input: DepthSensor.Grid, VisualSensor.Frame, AudioSensor.Signals
+        Output: AnalysisEngine.Frame
+        Process:
+          -> Synchronize(Timestamps)
+          -> Normalize(DepthSensor, VisualSensor, AudioSensor)
+          -> DetectObjects(VisualSensor)
+          -> Fuse(DepthSensor, AudioSensor)
+          -> OutputTo(AnalysisEngine)
+      }
+}
