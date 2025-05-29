@@ -1,0 +1,1 @@
+# (Future) Output for native MCP format

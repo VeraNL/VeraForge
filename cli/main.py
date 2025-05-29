@@ -1,0 +1,1 @@
+# CLI entrypoint (e.g. `veraforge compile`)

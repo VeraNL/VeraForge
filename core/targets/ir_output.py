@@ -1,0 +1,1 @@
+# Serializer for VeraForgeIR (JSON/YAML)

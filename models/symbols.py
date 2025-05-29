@@ -1,0 +1,1 @@
+# Symbol table for declared Channels, Rituals, etc.
